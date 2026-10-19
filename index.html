@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Streakboard</title>
+<meta name="description" content="Live GitHub contribution streak, updated every few minutes.">
+<meta property="og:title" content="Streakboard — my GitHub streak">
+<meta property="og:description" content="Live GitHub contributions, current streak and best streak.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0b0f0c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Streak">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20512%20512%22%3E%3Crect%20width%3D%22512%22%20height%3D%22512%22%20rx%3D%22112%22%20fill%3D%22%230b0f0c%22/%3E%3Cg%20transform%3D%22translate%2896%2096%29%22%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%2296%22%20height%3D%2296%22%20rx%3D%2218%22%20fill%3D%22%230e4429%22/%3E%3Crect%20x%3D%22112%22%20y%3D%220%22%20width%3D%2296%22%20height%3D%2296%22%20rx%3D%2218%22%20fill%3D%22%2326a641%22/%3E%3Crect%20x%3D%22224%22%20y%3D%220%22%20width%3D%2296%22%20height%3D%2296%22%20rx%3D%2218%22%20fill%3D%22%2339d353%22/%3E%3Crect%20x%3D%220%22%20y%3D%22112%22%20width%3D%2296%22%20height%3D%2296%22%20rx%3D%2218%22%20fill%3D%22%23006d32%22/%3E%3Crect%20x%3D%22112%22%20y%3D%22112%22%20width%3D%2296%22%20height%3D%2296%22%20rx%3D%2218%22%20fill%3D%22%2339d353%22/%3E%3Crect%20x%3D%22224%22%20y%3D%22112%22%20width%3D%2296%22%20height%3D%2296%22%20rx%3D%2218%22%20fill%3D%22%2318211b%22/%3E%3Crect%20x%3D%220%22%20y%3D%22224%22%20width%3D%2296%22%20height%3D%2296%22%20rx%3D%2218%22%20fill%3D%22%2339d353%22/%3E%3Crect%20x%3D%22112%22%20y%3D%22224%22%20width%3D%2296%22%20height%3D%2296%22%20rx%3D%2218%22%20fill%3D%22%2326a641%22/%3E%3Crect%20x%3D%22224%22%20y%3D%22224%22%20width%3D%2296%22%20height%3D%2296%22%20rx%3D%2218%22%20fill%3D%22%2339d353%22/%3E%3C/g%3E%3C/svg%3E" type="image/svg+xml">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one centered column — today's status, the big streak number, the year grid, stats, share bar. */
+:root{
+  --bg:#0b0f0c; --panel:#121814; --line:#223027; --fg:#e8efe9; --muted:#8b9a90;
+  --l0:#18211b; --l1:#0e4429; --l2:#006d32; --l3:#26a641; --l4:#39d353;
+  --warn:#f0b429; --accent:#39d353;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){:root{
+  --bg:#f5f8f5; --panel:#ffffff; --line:#dbe4dd; --fg:#122016; --muted:#5d6e62;
+  --l0:#e7ede8; --l1:#9be9a8; --l2:#40c463; --l3:#30a14e; --l4:#216e39;
+  --warn:#b7791f; --accent:#1f883d; color-scheme:light;
+}}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font:15px/1.5 var(--mono);
+  padding-top:max(20px,env(safe-area-inset-top,0px));padding-bottom:max(24px,env(safe-area-inset-bottom,0px));
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  -webkit-font-smoothing:antialiased}
+main{max-width:860px;margin:0 auto;display:grid;gap:20px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.who{display:flex;align-items:center;gap:10px;min-width:0}
+.who img{width:36px;height:36px;border-radius:50%;background:var(--l0)}
+.who a{color:var(--fg);text-decoration:none;font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.who a:hover{text-decoration:underline}
+.pill{font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.pill.live::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-right:6px;vertical-align:1px;animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.3}}
+@media (prefers-reduced-motion: reduce){.pill.live::before{animation:none}}
+
+.hero{display:grid;gap:4px}
+.today{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.today.done{color:var(--accent)} .today.risk{color:var(--warn)}
+.big{font-family:var(--display);font-weight:800;font-size:clamp(64px,18vw,148px);line-height:.9;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.big small{font-size:.28em;font-weight:500;letter-spacing:-.01em;color:var(--muted);margin-left:.25em}
+.nudge{font-family:var(--display);font-weight:500;font-size:clamp(17px,3.6vw,21px);text-wrap:balance;max-width:40ch}
+
+.board{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;gap:10px}
+.board svg{width:100%;height:auto;display:block}
+.legend{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);gap:8px;flex-wrap:wrap}
+.legend .scale{display:flex;align-items:center;gap:3px}
+.legend .scale i{width:11px;height:11px;border-radius:2px;display:inline-block}
+.tip{font-size:12px;color:var(--muted);min-height:18px}
+
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.stat{background:var(--panel);padding:14px 16px;display:grid;gap:2px}
+.stat b{font-family:var(--display);font-size:28px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.stat span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:560px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+button,.btn{font:600 14px var(--mono);padding:10px 16px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--fg);cursor:pointer}
+button.primary{background:var(--accent);border-color:var(--accent);color:#04140a}
+button:hover{filter:brightness(1.1)}
+button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+form{display:flex;gap:8px;flex-wrap:wrap}
+input{font:15px var(--mono);padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--fg);flex:1 1 180px;min-width:0}
+.foot{font-size:12px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.toast{position:fixed;left:50%;bottom:max(20px,env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:13px;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.show{opacity:1}
+.err{color:var(--warn)}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="who">
+      <img id="avatar" alt="" width="36" height="36">
+      <a id="handle" href="#" target="_blank" rel="noopener">…</a>
+    </div>
+    <span class="pill live" id="status">Loading</span>
+  </header>
+
+  <section class="hero" aria-live="polite">
+    <div class="today" id="today">Checking today…</div>
+    <div class="big"><span id="streak">–</span><small>day streak</small></div>
+    <div class="nudge" id="nudge">&nbsp;</div>
+  </section>
+
+  <section class="board">
+    <svg id="grid" role="img" aria-label="Contribution calendar"></svg>
+    <div class="legend">
+      <span class="tip" id="tip">Tap a square for details</span>
+      <span class="scale">Less <i style="background:var(--l0)"></i><i style="background:var(--l1)"></i><i style="background:var(--l2)"></i><i style="background:var(--l3)"></i><i style="background:var(--l4)"></i> More</span>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="stat"><b id="sTotal">–</b><span>Past year</span></div>
+    <div class="stat"><b id="sBest">–</b><span>Best streak</span></div>
+    <div class="stat"><b id="sWeek">–</b><span>This week</span></div>
+    <div class="stat"><b id="sActive">–</b><span>Active days</span></div>
+  </section>
+
+  <div class="actions">
+    <button class="primary" id="shareBtn" type="button">Share</button>
+    <button id="imgBtn" type="button">Save image</button>
+    <button id="copyBtn" type="button">Copy link</button>
+  </div>
+
+  <form id="userForm">
+    <label for="userInput" style="position:absolute;left:-9999px">GitHub username</label>
+    <input id="userInput" name="u" placeholder="GitHub username" autocomplete="off" autocapitalize="off" spellcheck="false">
+    <button type="submit">Show</button>
+  </form>
+
+  <div class="foot">
+    <span id="updated">&nbsp;</span>
+    <span>Refreshes every 10 min · data via GitHub public profile</span>
+  </div>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>
+const API = u => `https://github-contributions-api.jogruber.de/v4/${encodeURIComponent(u)}?y=last`;
+const REFRESH_MS = 10 * 60 * 1000;
+const $ = id => document.getElementById(id);
+const store = {
+  get(k){ try { return localStorage.getItem(k) } catch { return null } },
+  set(k,v){ try { localStorage.setItem(k,v) } catch {} }
+};
+
+let user = new URLSearchParams(location.search).get('u') || store.get('streak.user') || 'torvalds';
+let data = null;
+
+const iso = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const fmtDate = s => new Date(s+'T00:00:00').toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric'});
+
+function compute(days){
+  const todayIso = iso(new Date());
+  days = days.filter(d => d.date <= todayIso);
+  const map = Object.fromEntries(days.map(d => [d.date, d.count]));
+  const todayCount = map[todayIso] || 0;
+
+  // Current streak: today counts if done; if not yet, the streak from yesterday is still alive.
+  let streak = 0, cur = new Date();
+  if (!todayCount) cur.setDate(cur.getDate()-1);
+  while ((map[iso(cur)] || 0) > 0) { streak++; cur.setDate(cur.getDate()-1); }
+
+  let best = 0, run = 0;
+  for (const d of days) { run = d.count > 0 ? run+1 : 0; best = Math.max(best, run); }
+
+  const now = new Date(), monday = new Date(now);
+  monday.setDate(now.getDate() - ((now.getDay()+6)%7));
+  const weekStart = iso(monday);
+  const week = days.filter(d => d.date >= weekStart).reduce((a,d)=>a+d.count,0);
+  const active = days.filter(d => d.count > 0).length;
+  const total = days.reduce((a,d)=>a+d.count,0);
+  return {days, todayCount, streak, best, week, active, total};
+}
+
+function nudgeText(s){
+  if (s.todayCount && s.streak >= s.best && s.best > 1) return `New personal best. Every day from here sets the record.`;
+  if (s.todayCount) return `Today is in. ${s.best - s.streak > 0 ? `${s.best - s.streak} more ${s.best - s.streak === 1 ? 'day' : 'days'} to beat your best of ${s.best}.` : 'Come back tomorrow.'}`;
+  if (s.streak) return `Ship one commit before midnight to make it ${s.streak + 1}.`;
+  return `Zero today. One commit starts a new streak.`;
+}
+
+function render(){
+  const s = compute(data.contributions);
+  $('streak').textContent = s.streak;
+  const t = $('today');
+  t.className = 'today ' + (s.todayCount ? 'done' : 'risk');
+  t.textContent = s.todayCount ? `Today: ${s.todayCount} contribution${s.todayCount>1?'s':''}` : (s.streak ? 'Today: streak at risk' : 'Today: nothing yet');
+  $('nudge').textContent = nudgeText(s);
+  $('sTotal').textContent = s.total.toLocaleString();
+  $('sBest').textContent = s.best;
+  $('sWeek').textContent = s.week;
+  $('sActive').textContent = s.active;
+  drawGrid(s.days);
+  document.title = `${s.streak}-day streak · ${user}`;
+  window._s = s;
+}
+
+function drawGrid(all){
+  // Phones get the last ~6 months so squares stay tappable.
+  const days = innerWidth < 600 ? all.slice(-26*7) : all;
+  const cell = 11, gap = 3, step = cell+gap, top = 18, left = 26;
+  const first = new Date(days[0].date+'T00:00:00');
+  const offset = first.getDay(); // Sunday-first rows like GitHub
+  const weeks = Math.ceil((days.length + offset) / 7);
+  const W = left + weeks*step, H = top + 7*step;
+  const svg = $('grid');
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  let out = '', lastMonth = -1;
+  days.forEach((d,i) => {
+    const idx = i + offset, x = left + Math.floor(idx/7)*step, y = top + (idx%7)*step;
+    const dt = new Date(d.date+'T00:00:00');
+    if (idx%7 === 0 && dt.getMonth() !== lastMonth && dt.getDate() <= 7) {
+      lastMonth = dt.getMonth();
+      if (x < W - 20) out += `<text x="${x}" y="11" font-size="9" fill="var(--muted)" font-family="var(--mono)">${dt.toLocaleDateString(undefined,{month:'short'})}</text>`;
+    }
+    out += `<rect x="${x}" y="${y}" width="${cell}" height="${cell}" rx="2" fill="var(--l${d.level})" data-d="${d.date}" data-c="${d.count}" tabindex="-1"></rect>`;
+  });
+  ['Mon','Wed','Fri'].forEach((n,k) => out += `<text x="0" y="${top + (1+2*k)*step + 9}" font-size="9" fill="var(--muted)" font-family="var(--mono)">${n}</text>`);
+  svg.innerHTML = out;
+}
+
+let lastNarrow = innerWidth < 600;
+addEventListener('resize', () => { const n = innerWidth < 600; if (n !== lastNarrow && window._s) { lastNarrow = n; drawGrid(window._s.days); } });
+$('grid').addEventListener('click', showTip);
+$('grid').addEventListener('mousemove', showTip);
+function showTip(e){
+  const r = e.target.closest('rect'); if (!r) return;
+  const c = +r.dataset.c;
+  $('tip').textContent = `${c || 'No'} contribution${c===1?'':'s'} on ${fmtDate(r.dataset.d)}`;
+}
+
+async function load(){
+  $('status').textContent = 'Updating';
+  try {
+    const res = await fetch(API(user), {cache:'no-store'});
+    if (!res.ok) throw new Error(res.status === 404 ? `No GitHub user named “${user}”.` : `GitHub data is unavailable right now (${res.status}).`);
+    data = await res.json();
+    if (!data.contributions?.length) throw new Error(`No public contributions found for “${user}”.`);
+    $('avatar').src = `https://github.com/${encodeURIComponent(user)}.png?size=72`;
+    $('handle').textContent = '@' + user;
+    $('handle').href = `https://github.com/${encodeURIComponent(user)}`;
+    $('userInput').value = user;
+    render();
+    $('status').textContent = 'Live';
+    $('updated').textContent = 'Updated ' + new Date().toLocaleTimeString([], {hour:'numeric', minute:'2-digit'});
+  } catch (err) {
+    $('status').textContent = 'Offline';
+    $('nudge').innerHTML = '';
+    const span = document.createElement('span'); span.className = 'err'; span.textContent = err.message || 'Could not load data. Check your connection.';
+    $('nudge').append(span);
+  }
+}
+
+$('userForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const v = $('userInput').value.trim().replace(/^@/,'');
+  if (!v) return;
+  user = v; store.set('streak.user', v);
+  history.replaceState(null, '', `?u=${encodeURIComponent(v)}`);
+  load();
+});
+
+function shareUrl(){ return `${location.origin}${location.pathname}?u=${encodeURIComponent(user)}`; }
+function toast(msg){ const t=$('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),1800); }
+
+$('copyBtn').onclick = async () => {
+  try { await navigator.clipboard.writeText(shareUrl()); toast('Link copied'); }
+  catch { prompt('Copy this link', shareUrl()); }
+};
+
+// 1200×627 card sized for LinkedIn / X posts.
+async function makeImage(){
+  const s = window._s; if (!s) return null;
+  await document.fonts.ready;
+  const css = getComputedStyle(document.documentElement), v = n => css.getPropertyValue(n).trim();
+  const c = document.createElement('canvas'); c.width = 1200; c.height = 627;
+  const g = c.getContext('2d');
+  g.fillStyle = v('--bg'); g.fillRect(0,0,1200,627);
+  g.fillStyle = v('--muted'); g.font = '600 26px "IBM Plex Mono", monospace';
+  g.fillText('@' + user + '  ·  GitHub', 64, 84);
+  g.fillStyle = v('--fg'); g.font = '800 170px "Bricolage Grotesque", sans-serif';
+  g.fillText(String(s.streak), 60, 250);
+  const w = g.measureText(String(s.streak)).width;
+  g.fillStyle = v('--muted'); g.font = '500 44px "Bricolage Grotesque", sans-serif';
+  g.fillText('day streak', 60 + w + 20, 250);
+  const first = new Date(s.days[0].date+'T00:00:00'), off = first.getDay(), step = 20.5, cs = 17;
+  s.days.forEach((d,i) => {
+    const idx = i+off; g.fillStyle = v('--l'+d.level);
+    const x = 64 + Math.floor(idx/7)*step, y = 300 + (idx%7)*step;
+    g.beginPath(); g.roundRect ? g.roundRect(x,y,cs,cs,3) : g.rect(x,y,cs,cs); g.fill();
+  });
+  g.font = '600 26px "IBM Plex Mono", monospace';
+  [[s.total.toLocaleString(),'past year'],[s.best,'best streak'],[s.active,'active days']].forEach(([n,l],k) => {
+    const x = 64 + k*360;
+    g.fillStyle = v('--fg'); g.fillText(String(n), x, 495+70);
+    g.fillStyle = v('--muted'); g.fillText(l, x + g.measureText(String(n)+' ').width, 495+70);
+  });
+  return new Promise(r => c.toBlob(r, 'image/png'));
+}
+
+$('imgBtn').onclick = async () => {
+  const blob = await makeImage(); if (!blob) return;
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = `streak-${user}.png`; a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href), 5000);
+  toast('Image saved');
+};
+
+$('shareBtn').onclick = async () => {
+  const s = window._s;
+  const text = s ? `${s.streak}-day GitHub streak and counting. ${s.total.toLocaleString()} contributions this past year.` : 'My GitHub streak';
+  try {
+    const blob = await makeImage();
+    const file = blob && new File([blob], `streak-${user}.png`, {type:'image/png'});
+    if (file && navigator.canShare?.({files:[file]})) await navigator.share({files:[file], text: text + ' ' + shareUrl()});
+    else if (navigator.share) await navigator.share({title:'Streakboard', text, url: shareUrl()});
+    else window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl())}`, '_blank', 'noopener');
+  } catch (e) { if (e.name !== 'AbortError') toast('Sharing was cancelled'); }
+};
+
+load();
+setInterval(load, REFRESH_MS);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) load(); });
+</script>
+</body>
+</html>
