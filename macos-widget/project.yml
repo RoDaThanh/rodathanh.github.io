@@ -1,0 +1,59 @@
+name: Streakboard
+options:
+  bundleIdPrefix: io.github.rodathanh
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    # No developer certificate needed: sign to run locally.
+    CODE_SIGN_STYLE: Manual
+    CODE_SIGN_IDENTITY: "-"
+    DEVELOPMENT_TEAM: ""
+    ENABLE_HARDENED_RUNTIME: NO
+targets:
+  Streakboard:
+    type: application
+    platform: macOS
+    sources: [App, Shared]
+    dependencies:
+      - target: StreakboardWidget
+        embed: true
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleDisplayName: Streakboard
+        LSApplicationCategoryType: public.app-category.developer-tools
+        # Menu bar only: no Dock icon, no window.
+        LSUIElement: true
+    entitlements:
+      path: App/App.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+        com.apple.security.network.client: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.rodathanh.Streakboard
+        GENERATE_INFOPLIST_FILE: YES
+  StreakboardWidget:
+    type: app-extension
+    platform: macOS
+    sources: [Widget, Shared]
+    info:
+      path: Widget/Info.plist
+      properties:
+        CFBundleDisplayName: Streakboard
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    entitlements:
+      path: Widget/Widget.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+        com.apple.security.network.client: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.rodathanh.Streakboard.Widget
+        GENERATE_INFOPLIST_FILE: YES

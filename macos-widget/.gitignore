@@ -1,0 +1,6 @@
+build/
+*.xcodeproj/
+App/Info.plist
+App/App.entitlements
+Widget/Info.plist
+Widget/Widget.entitlements
